@@ -5,12 +5,14 @@ import PackageDescription
 
 let package = Package(
     name: "SPM-Test",
+    platforms: [
+        .iOS(.v12)
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "SPM-Test",
-            targets: ["SPM-Test"]
-        ),
+        .library(name: "SPM-Test-Dynamic", targets: ["SPM-Test"]),
+        .library(name: "SPM-Test-Dynamic", type: .dynamic, targets: ["SPM-Test"]),
+        .library(name: "SPM-Test-Static", type: .static, targets: ["SPM-Test"])
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
