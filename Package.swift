@@ -14,15 +14,19 @@ let package = Package(
         .library(name: "SPM-Test-Dynamic", type: .dynamic, targets: ["SPM-Test"]),
         .library(name: "SPM-Test-Static", type: .static, targets: ["SPM-Test"])
     ],
+    dependencies: [.package(url: "https://github.com/Alamofire/Alamofire", from: "5.0.0")],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "SPM-Test"
+            name: "SPM-Test",
+            resources: [
+                .copy("Resources")                
+            ]
         ),
         .testTarget(
             name: "SPM-TestTests",
             dependencies: ["SPM-Test"]
         ),
-    ]
+    ],
 )
